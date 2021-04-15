@@ -31,6 +31,17 @@ export default {
       .then((response) => {
         console.log(response);
         alert("コメントしました");
+        this.$router.go({
+        path: this.$router.currentRoute.path,
+        force: true,
+      })
+      })
+      .catch(error => {
+        alert("コメントできませんでした");
+        this.$router.go({
+        path: this.$router.currentRoute.path,
+        force: true,
+      })
       });
       }
     }
