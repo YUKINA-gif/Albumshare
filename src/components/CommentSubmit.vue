@@ -38,6 +38,7 @@ export default {
       })
       .catch(error => {
         alert("コメントできませんでした");
+        console.log(error);
         this.$router.go({
         path: this.$router.currentRoute.path,
         force: true,
