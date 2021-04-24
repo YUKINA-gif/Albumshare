@@ -5,8 +5,15 @@
       <div class="flex-item" v-for="(file, index) in getItems" :key="index" @click="$router.push({
         path: '/photo/' + file.id,
         params:{ id: file.id },
-        })">
+        })" @mouseover="mouseOverAction(index)" @mouseleave="mouseLeaveAction(index)">
         <div class="photo">
+          <div class="photo-mouseAction" v-if="mouseHover && index === hoverIndex">
+            <a class="box" :href="file.file" download @click.stop>
+            <div class="downarrow">
+              <img src="../assets/down arrow.png" alt="download">
+            </div>
+            </a>
+          </div>
           <img :src="file.file" alt="" />
         </div>
       </div>
@@ -37,7 +44,10 @@ export default {
       files:[],
       path: true,
       currentPage:1,
-      parPage:6
+      parPage:6,
+      mouseHover:false,
+      hoverIndex:null,
+      like:[],
     }
   },
   components:{
@@ -45,6 +55,7 @@ export default {
   },
    created(){
     this.getFilePath();
+    this.getPhoto();
   },
   methods:{
     async getFilePath(){
@@ -52,12 +63,20 @@ export default {
       .get("https://calm-spire-40988.herokuapp.com/api/home")
       .then(response => {
         console.log(response)
-        this.files = response.data.data
+        this.files = response.data.data,
+        this.id = response.data.data.id
         });
     },
     paginateClickCallback: function (pageNum) {
       this.currentPage = Number(pageNum);
-    },    
+    },
+    mouseOverAction(index){
+      this.mouseHover = true
+      this.hoverIndex = index
+    },
+    mouseLeaveAction(){
+      this.mouseHover = false
+    },
   },
    computed: {
     getItems: function () {
@@ -108,5 +127,31 @@ export default {
 }
 .page-ui{
   font-size: 23px;
+}
+.photo-mouseAction{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 380px;
+  height: 300px;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+.box{
+  width: 60px;
+  height: 40px;
+  background-color: rgb(248, 248, 248,0.5);
+  border-radius: 5px;
+  position: absolute;
+  top: 5px;
+  right: 6px;
+}
+.downarrow{
+  transform: translate(95%,40%);
+  width: 20px;
+  height: 23px;
+}
+.box:hover{
+  background: #fff;
 }
 </style>

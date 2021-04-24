@@ -7,7 +7,7 @@
     <div class="right">
       <p class="photoname">Photo by {{ name }}</p>
       <div class="heart flex" @click="likeSubmit">
-      <img src="../assets/heart.jpeg" alt="heart" class="heartimg">
+      <img src="../assets/heart.png" alt="heart">
       <p class="heartlength">{{ like.length }}</p>
       </div>
       <div class="comments">
@@ -104,6 +104,8 @@ export default {
   height: 420px;
   position: relative;
   overflow: hidden;
+  width: 50%;
+  text-align: center;
 }
 .param{
   justify-content: space-between;
@@ -111,10 +113,6 @@ export default {
 .flex{
   display: flex;
   flex: wrap;
-}
-.left{
-  width: 50%;
-  text-align: center;
 }
 .img{
   margin-bottom: 10px;
@@ -130,16 +128,6 @@ export default {
     width: 50%;
     margin-top: 2%;
   }
-  .heart{
-    border: 1px solid #ccc;
-    width:70px;
-    height: 20px;
-    justify-content: space-around;
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 3px;
-    margin: 15px 0;
-  }
   .heartlength{
     font-size: 20px;
   }
@@ -153,6 +141,16 @@ export default {
   width: 100%;
   margin:2% 0;
   text-align: center;
+}
+.heart{
+  border: 1px solid #ccc;
+  width:70px;
+  height: 20px;
+  justify-content: space-around;
+  padding: 5px 0;
+  cursor: pointer;
+  border-radius: 3px;
+  margin: 15px 0;
 }
 
 @media screen and (max-width: 768px){

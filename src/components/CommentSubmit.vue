@@ -30,19 +30,19 @@ export default {
       })
       .then((response) => {
         console.log(response);
-        alert("コメントしました");
+        alert("コメントしました")
         this.$router.go({
         path: this.$router.currentRoute.path,
         force: true,
-      })
+      });
       })
       .catch(error => {
-        alert("コメントできませんでした");
+        alert("コメントできませんでした")
         console.log(error);
         this.$router.go({
         path: this.$router.currentRoute.path,
         force: true,
-      })
+      });
       });
       }
     }

@@ -125,4 +125,7 @@ input, select {
 * {
   font-family: "Sylfaen";
 }
+.flex{
+  display: flex;
+}
 </style>
