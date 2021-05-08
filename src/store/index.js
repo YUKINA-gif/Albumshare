@@ -60,6 +60,7 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    username: state => state.user ? state.user.name : ""
-  }
+    username: state => state.user ? state.user.name : "",
+    userid: state => state.user ? state.user.id : ""
+  },
 });

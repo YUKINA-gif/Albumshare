@@ -1,40 +1,47 @@
 <template>
   <div id="header">
-    
     <h1 @click="$router.push('/home')">AlbumShare</h1>
-  
+
     <nav>
       <button @click="showForm = !showForm" v-if="this.$store.state.auth">
-        <i></i>+ Submit a photo</button>
-        
-      <span v-if="this.$store.state.auth">{{ username }}</span>
-      <span class="login" @click="$router.push('/')" v-else>Login / Register</span>
+        <i></i>+ Submit a photo
+      </button>
+
+      <span
+        v-if="this.$store.state.auth"
+        @click="$router.push('/mypage')"
+        class="username"
+        >{{ username }}</span
+      >
+      <span class="login" @click="$router.push('/')" v-else
+        >Login / Register</span
+      >
       <PhotoForm v-model="showForm" />
     </nav>
   </div>
 </template>
 
 <script>
-import PhotoForm from './PhotoForm';
+import PhotoForm from "./PhotoForm";
 export default {
-  components:{
-    PhotoForm
+  components: {
+    PhotoForm,
   },
   data() {
     return {
-      showForm:false
-    }
+      showForm: false,
+    };
   },
-  computed:{
-    username(){
-      return this.$store.getters.username
-    }
-  }
-}
+  computed: {
+    username() {
+      return this.$store.getters.username;
+    },
+  },
+};
 </script>
 
 <style scoped>
-#header{
+#header {
   height: 50px;
   display: flex;
   justify-content: space-between;
@@ -42,19 +49,22 @@ export default {
   padding: 0 10px;
   line-height: 50px;
 }
-span{
+span {
   padding-left: 5px;
 }
-h1{
+h1 {
   font-size: 20px;
   cursor: pointer;
 }
-.login{
+.login {
   cursor: pointer;
 }
-button{
+button {
   background-color: #fff;
   border: 1px solid #ccc;
   outline: none;
+}
+.username {
+  cursor: pointer;
 }
 </style>

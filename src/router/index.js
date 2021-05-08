@@ -5,6 +5,7 @@ import Photolist from '../views/Photolist.vue';
 import PhotoDetail from '../views/PhotoDetail.vue';
 import store from "../store/index";
 import SystemError from '../components/System.vue';
+import Mypage from '../views/MyPage.vue';
 
 Vue.use(VueRouter)
 
@@ -32,10 +33,18 @@ const routes = [
     }
   },
   {
+    path: "/mypage",
+    name: "Mypage",
+    component: Mypage,
+    meta: {
+      requireAuth:true
+    }
+  },
+  {
     path: "/*",
     name: "SystemError",
     component: SystemError,
-  }
+  },
 ]
 
 const router = new VueRouter({

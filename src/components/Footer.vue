@@ -7,26 +7,26 @@
 
 <script>
 export default {
-  methods:{
-    logout(){
+  methods: {
+    logout() {
       this.$store.dispatch("logout");
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
-#footer{
+#footer {
   height: 100px;
   width: 100%;
   margin: 0 auto;
   text-align: center;
   box-shadow: 0 -5px 5px #ccc;
 }
-span{
+span {
   display: inline-block;
   margin: 10px;
-  
+
   cursor: pointer;
 }
 </style>
